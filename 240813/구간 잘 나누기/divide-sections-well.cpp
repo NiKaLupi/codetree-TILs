@@ -13,7 +13,7 @@ int main() {
         arr1[i] = arr[i];
     }
     int ans = 0;
-    for(int i = 1; i <= 100; i++){
+    for(int i = 1; i <= 5000; i++){
         int a = 0;
         int cnt = 0;
         for(int j = 0; j < n; j++){
