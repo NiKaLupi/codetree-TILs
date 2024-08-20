@@ -5,6 +5,7 @@ int main() {
     int a, b, c, d;
     cin>> a>> b>> c>> d;
     if(b < d) cout<< d - a;
-    else cout<< b - c;
+    else if(b > d) cout<< b - c;
+    else cout<< b - a + d - c;
     return 0;
 }
