@@ -13,7 +13,7 @@ int main() {
     bool ans = true;
     for(int i = 0; i < n; i++){
         cin>> x[i]>> x1[i]; 
-        if(x[i] >= a || x[i] <= b){ 
+        if((x[i] >= a && x[i] <= b) || (x1[i] >= a && x1[i] <= b)){ 
             if(x[i] > a) a = x[i];
             if(x1[i] < b) b = x1[i];
         }
