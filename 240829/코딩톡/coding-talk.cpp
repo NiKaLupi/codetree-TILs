@@ -24,9 +24,9 @@ int main() {
         users[sender[i] - 'A'] = '0';
     }
 
-
-    for(int i = 0; i < n; i++){
-        if(users[i] == 'A' + i) cout<< users[i]<< ' ';
+    if(unreader[p - 1] != 0)  
+        for(int i = 0; i < n; i++){
+            if(users[i] == 'A' + i) cout<< users[i]<< ' ';
     }
     return 0;
 }
