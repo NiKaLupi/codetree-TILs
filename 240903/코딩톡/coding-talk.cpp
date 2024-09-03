@@ -23,10 +23,11 @@ int main() {
     for(int i = p - 1; i < n; i++){
         users[sender[i] - 'A'] = '0';
     }
-    if(unreader[p] == unreader[p - 1]) users[sender[p - 1]] = '0'; 
+    if(unreader[p - 1] == unreader[p - 2]) users[sender[p - 1] - 'A' + 1] = '0'; 
     if(unreader[p - 1] != 0)  
         for(int i = 0; i < n; i++){
             if(users[i] == 'A' + i) cout<< users[i]<< ' ';
     }
+    //cout<< sender[p - 1] - 'A' + 1;
     return 0;
 }
