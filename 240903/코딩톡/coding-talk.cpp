@@ -20,7 +20,7 @@ int main() {
         cin>> sender[i]>> unreader[i];    
     }
 
-    for(int i = p - 1; i < n; i++){
+    for(int i = p - 1; i < m; i++){
         users[sender[i] - 'A'] = '0';
     }
     if(unreader[p - 1] == unreader[p - 2]) users[sender[p - 1] - 'A' + 1] = '0'; 
