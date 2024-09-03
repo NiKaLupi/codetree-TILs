@@ -1,49 +1,38 @@
 #include <iostream>
-using namespace std;
 
 #define MAX_M 100
-#define MAX_N 26
 
-char sender[MAX_M];
-int unreader[MAX_M];
-char users[MAX_N];
+using namespace std;
+
+int n, p, m;
+char c[MAX_M];
+int u[MAX_M];
 
 int main() {
-    int n, m, p, checkpoint = -1;  // checkpoint 초기화
+    // 입력
     cin >> n >> m >> p;
+    for(int i = 0; i < m; i++)
+        cin >> c[i] >> u[i];
 
-    for(int i = 0; i < n; i++){
-        users[i] = 'A' + i;
-    }
+    // 모두 읽은 채팅이라면 읽지 않은 사람은 없습니다.
+    if(u[p - 1] == 0)
+        return 0;
+    
+    // 각 사람에 대해 채팅을 읽었을지 안 읽었을지 판단합니다.
+    for(int i = 0; i < n; i++) {
+        // read : 확실하게 채팅을 읽었으면 true
+        char person = 'A' + i;
+        bool read = false;
 
-    for(int i = 0; i < m; i++){
-        cin >> sender[i] >> unreader[i];
-        if(unreader[i] == 0)
-            checkpoint = i; 
+        // 만약 p번 메시지를 읽은 사람 수와 같은 채팅을 기준으로
+        // 한번이라도 채팅을 쳤다면 확실하게 채팅을 읽었습니다.
+        for(int j = 0; j < m; j++)
+            if(u[j] >= u[p - 1] && c[j] == person)
+                read = true;
+            
+        if(read == false)
+            cout << person << " ";
     }
-
-    if (checkpoint != -1) {
-        for(int i = checkpoint + 1; i < m; i++){
-            users[sender[i] - 'A'] = '0';
-            //cout<< sender[i]<< ' ';
-        }
-    }
-
-    for(int i = p - 1; i < m; i++){
-        users[sender[i] - 'A'] = '0';
-    }
-
-    if (p > 1 && unreader[p - 1] == unreader[p - 2]) {
-        if (sender[p - 1] - 'A' + 1 < n) {
-            users[sender[p - 1] - 'A' + 1] = '0';
-        }
-    }
-    if(unreader[p - 1] != 0){
-        for(int i = 0; i < n; i++){
-            if(users[i] != '0') {
-                cout << users[i] << ' ';
-            }
-        }
-    }
+    
     return 0;
 }
