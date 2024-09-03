@@ -16,7 +16,7 @@ int main() {
         users[i] = 'A' + i;
     }
 
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < m; i++){
         cin>> sender[i]>> unreader[i];    
     }
 
