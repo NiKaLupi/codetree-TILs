@@ -38,10 +38,11 @@ int main() {
             users[sender[p - 1] - 'A' + 1] = '0';
         }
     }
-
-    for(int i = 0; i < n; i++){
-        if(users[i] != '0') {
-            cout << users[i] << ' ';
+    if(unreader[p - 1] != 0){
+        for(int i = 0; i < n; i++){
+            if(users[i] != '0') {
+                cout << users[i] << ' ';
+            }
         }
     }
     return 0;
