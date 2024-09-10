@@ -23,19 +23,20 @@ int main() {
                 if(seat[j] == 1){
                     dist = j - i;
                     position = j;
+                    if(dist < min_dist){
+                        min_dist = dist; // Update min_dist correctly
+                    }
                     break;
-                }       
+                }
             }
             if(dist > max_dist) {
                 max_dist = dist; // Update max_dist
                 x = i;
                 y = position;
-            }if(dist < min_dist){
-                min_dist = y - x;
             }
         }
     }
-    if(min_dist < (y - x) / 2) cout<< min_dist;
+    if(min_dist < (y - x) / 2) cout << min_dist;
     else cout << (y - x) / 2;
     return 0;
 }
