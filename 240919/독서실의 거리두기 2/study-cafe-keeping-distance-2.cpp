@@ -17,7 +17,7 @@ int main() {
         seat[i] = s[i] - '0';
     }
 
-    int x1 = 0, x2 = 0;
+    int x1 = -1, x2 = -1;
     int max_distance = 0;
 
     // Find the maximum distance between two occupied seats
@@ -29,20 +29,21 @@ int main() {
                     if (distance > max_distance) {
                         x1 = i;
                         x2 = j;
-                        max_distance = distance / 2 + distance % 2;
+                        max_distance = distance / 2;
                     }
-                    break; // Exit the inner loop once the first occupied seat is found
+                    break;
                 }
-                else if(j - i - 1> max_distance) x1 = i, x2 = j, max_distance = j - i - 1;
             }
         }
     }
 
-    // Place a new seat at the midpoint
-    int new_seat_position = (x1 + x2) / 2 + (x1 + x2) % 2;
-    seat[new_seat_position] = 1;
+    // Place a new seat at the midpoint if x1 and x2 are valid
+    if (x1 != -1 && x2 != -1) {
+        int new_seat_position = (x1 + x2) / 2;
+        seat[new_seat_position] = 1;
+    }
 
-    // Find the minimum distance between occupied seats
+    // Find the minimum distance between occupied seats after placing the new seat
     int min_distance = n;
     int last_occupied = -1;
 
