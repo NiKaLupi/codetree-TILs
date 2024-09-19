@@ -1,60 +1,101 @@
 #include <iostream>
+#include <string>
+#include <algorithm>
+#include <climits>
+
 using namespace std;
 
-#define MAX_N 1000
-
-int seat[MAX_N] = {};
+int n;
+string seats;
 
 int main() {
-    int n;
-    string s;
+    // 입력:
+    cin >> n;
+    cin >> seats;
+    
+    // Step1-1. 최적의 위치 찾기
+    // 인접한 쌍들 중 가장 먼 1간의 쌍을 찾습니다.
+    int max_dist = 0;
+    int max_i, max_j;
+    for(int i = 0; i < n; i++) {
+        if(seats[i] == '1') {
+            for(int j = i + 1; j < n; j++)
+                if(seats[j] == '1') {
+                    // 1간의 쌍을 골랐을 때
+                    // 두 좌석간의 거리가 지금까지의 최적의 답 보다 더 좋다면
+                    // 값을 갱신해줍니다.
+                    if(j - i > max_dist) {
+                        max_dist = j - i;
 
-    cin >> n >> s;
-
-    for (int i = 0; i < n; i++) {
-        seat[i] = s[i] - '0';
-    }
-
-    int x1 = 0, x2 = 0; 
-    int max_distance = 0;
-    bool bool1 = true;
-    for (int i = 0; i < n; i++) {
-        if (seat[i] == 1) {
-            for (int j = i + 1; j < n; j++) {
-                if (seat[j] == 1) { 
-                    int distance = j - i;
-                    if (distance > max_distance) {
-                        x1 = i, x2 = j;
-                        max_distance = distance / 2 + distance % 2;
-                        bool1 = true;
+                        // 이때, 두 좌석의 위치를 기억합니다.
+                        max_i = i;
+                        max_j = j;
                     }
+
+                    // 인접한 쌍을 찾았으므로 빠져나옵니다.
                     break;
-                } else if (j - i > max_distance) {
-                    x1 = i, x2 = j;
-                    max_distance = j - i;
-                    bool1 = false;
                 }
-            }
         }
     }
 
-    //cout<< max_distance<< endl;
-    if(bool1) seat[(x1 + x2) / 2] = 1;
-    else seat[x2] = 1;
-    int min_dis = 10000;
-    for (int i = 0; i < n - 1; i++) {
-        if (seat[i] == 1) {
-            for (int j = i + 1; j < n; j++) {
-                if (seat[j] == 1) {
-                    if (j - i < min_dis) min_dis = j - i;
-                    break;
-                }
-            }
+    // Step1-2. 최적의 위치 찾기(예외 처리)
+    // 만약 맨 앞 좌석이 비거나, 맨 뒷 좌석이 비어있는 경우의
+    // 예외 처리를 해줍니다.
+    int max_dist2 = -1;
+    int max_idx = -1;
+    // 맨 앞 좌석이 비어있을 때, 맨 앞 좌석에 배정하면
+    // 거리가 얼마나 줄어드는지 확인합니다.
+    if(seats[0] == '0') {
+        int dist = 0;
+        for(int i = 0; i < n; i++) {
+            if(seats[i] == '1')
+                break;
+            dist++;
+        }
+        if(dist > max_dist2) {
+            max_dist2 = dist;
+            max_idx = 0;
         }
     }
-    /*for(int i = 0; i < n; i++){
-        cout<< seat[i];
-    }*/
-    cout << min_dis;
+
+    // 맨 뒷 좌석이 비어있을 때, 맨 뒷 좌석에 배정하면
+    // 거리가 얼마나 줄어드는지 확인합니다.
+    if(seats[n - 1] == '0') {
+        int dist = 0;
+        for(int i = n - 1; i >= 0; i--) {
+            if(seats[i] == '1')
+                break;
+            dist++;
+        }
+        if(dist > max_dist2) {
+            max_dist2 = dist;
+            max_idx = n - 1;
+        }
+    }
+
+
+    // Step2. 최적의 위치에 1을 놓습니다.
+    // 앞서 찾은 자리들 중 최적의 위치에 놓으면 됩니다.
+    if(max_dist2 >= max_dist / 2)
+        seats[max_idx] = '1';
+    else
+        seats[(max_i + max_j) / 2] = '1';
+
+    // Step3. 이제 인접한 쌍들 중 가장 가까운 1간의 쌍을 찾습니다.
+    // 이때의 값이 답이 됩니다.
+    int ans = INT_MAX;
+    for(int i = 0; i < n; i++) {
+        if(seats[i] == '1') {
+            for(int j = i + 1; j < n; j++)
+                if(seats[j] == '1') {
+                    ans = min(ans, j - i);
+					
+					// 인접한 쌍을 찾았으므로 빠져나옵니다.
+                    break;
+                }
+        }
+    }
+
+    cout << ans;
     return 0;
 }
