@@ -21,12 +21,14 @@ int main() {
         if(seat[i] == 1){
             int distance = 0;
             for(int j = i + 1; j < n; j++){
-                if(seat[j] == 1) distance = j - i;
-                if(distance > max_distance){
-                    x1 = i, x2 = j;
-                    max_distance = distance;
-                    break;
-                }
+                if(seat[j] == 1){ 
+                    distance = j - i;
+                    if(distance > max_distance){
+                        x1 = i, x2 = j;
+                        max_distance = distance / 2 + max_distance % 2 - 1;
+                        break;
+                    }
+                }else if(j - i - 1> max_distance) x1 = i, x2 = j, max_distance = j - i - 1;
             }
         }
     }
@@ -36,7 +38,7 @@ int main() {
         if(seat[i] == 1)    
             for(int j = i + 1; j < n; j++){
                 if(seat[j] == 1){
-                    if(j - i < min_dis) min_dis = j - i + 1;
+                    if(j - i < min_dis) min_dis = j - i;
                 }
             }
     }
