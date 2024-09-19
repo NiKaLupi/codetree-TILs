@@ -33,6 +33,7 @@ int main() {
                     }
                     break; // Exit the inner loop once the first occupied seat is found
                 }
+                else if(j - i > max_distance) x1 = i, x2 = j;
             }
         }
     }
