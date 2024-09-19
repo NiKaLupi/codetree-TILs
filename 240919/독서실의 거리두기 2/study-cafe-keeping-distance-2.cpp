@@ -29,11 +29,11 @@ int main() {
                     if (distance > max_distance) {
                         x1 = i;
                         x2 = j;
-                        max_distance = distance;
+                        max_distance = distance / 2 + distance % 2;
                     }
                     break; // Exit the inner loop once the first occupied seat is found
                 }
-                else if(j - i > max_distance) x1 = i, x2 = j, max_distance = j - i;
+                else if(j - i - 1> max_distance) x1 = i, x2 = j, max_distance = j - i - 1;
             }
         }
     }
