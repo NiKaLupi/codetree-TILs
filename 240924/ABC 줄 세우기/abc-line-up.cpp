@@ -1,35 +1,48 @@
 #include <iostream>
 using namespace std;
 #define MAX_N 26
+
 char line[MAX_N];
+
 int main() {
     int n;
-    cin>> n;
+    cin >> n;
 
-    for(int i = 0; i < n; i++){
-        cin>> line[i];
+    // Reading input into the line array
+    for (int i = 0; i < n; i++) {
+        cin >> line[i];
     }
 
     int ex_time = 0;
-    for(int i = 0; i < n; i++){
-        if(line[i] - 'A' < i){
+
+    // Loop through each character in the line
+    for (int i = 0; i < n; i++) {
+        int correct_pos = line[i] - 'A'; // Determine the alphabet index
+
+        // Case 1: If the character is to the left of its correct position
+        if (correct_pos < i) {
             char temp_p = line[i];
-            for(int j = i - 1; j >= 0; j--){
-                line[j + 1] = line[j];
-                line[j] = temp_p;
-                ex_time++;
-                if(line[temp_p - 'A'] == temp_p) break;
+            // Shift characters to the right to move temp_p to its correct position
+            for (int j = i; j > correct_pos; j--) {
+                line[j] = line[j - 1];
+                ex_time++;  // Count each swap
             }
-        }else if(line[i] - 'A' > i){
+            line[correct_pos] = temp_p; // Place the character in the correct position
+        }
+        // Case 2: If the character is to the right of its correct position
+        else if (correct_pos > i) {
             char temp_p = line[i];
-            for(int j = i + 1; j < n; j++){
-                line[j - 1] = line[j];
-                line[j] = temp_p;
-                ex_time++;
-                if(line[temp_p - 'A'] == temp_p) break;
+            // Shift characters to the left to move temp_p to its correct position
+            for (int j = i; j < correct_pos; j++) {
+                line[j] = line[j + 1];
+                ex_time++;  // Count each swap
             }
+            line[correct_pos] = temp_p; // Place the character in the correct position
         }
     }
-    cout<< ex_time;
+
+    // Output the total number of swaps
+    cout << ex_time << endl;
+
     return 0;
 }
