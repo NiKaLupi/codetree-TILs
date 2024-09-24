@@ -28,6 +28,8 @@ int main() {
                 ex_time++;  // Count each swap
             }
             line[correct_pos] = temp_p; // Place the character in the correct position
+            /*for(int k = 0; k < n; k++) cout<< line[k]<< ' ';
+                cout<< endl;*/
         }
         // Case 2: If the character is to the right of its correct position
         else if (correct_pos > i) {
@@ -38,6 +40,35 @@ int main() {
                 ex_time++;  // Count each swap
             }
             line[correct_pos] = temp_p; // Place the character in the correct position
+            /*for(int k = 0; k < n; k++) cout<< line[k]<< ' ';
+                cout<< endl;*/
+        }
+    }for (int i = 0; i < n; i++) {
+        int correct_pos = line[i] - 'A'; // Determine the alphabet index
+
+        // Case 1: If the character is to the left of its correct position
+        if (correct_pos < i) {
+            char temp_p = line[i];
+            // Shift characters to the right to move temp_p to its correct position
+            for (int j = i; j > correct_pos; j--) {
+                line[j] = line[j - 1];
+                ex_time++;  // Count each swap
+            }
+            line[correct_pos] = temp_p; // Place the character in the correct position
+            /*for(int k = 0; k < n; k++) cout<< line[k]<< ' ';
+                cout<< endl;*/
+        }
+        // Case 2: If the character is to the right of its correct position
+        else if (correct_pos > i) {
+            char temp_p = line[i];
+            // Shift characters to the left to move temp_p to its correct position
+            for (int j = i; j < correct_pos; j++) {
+                line[j] = line[j + 1];
+                ex_time++;  // Count each swap
+            }
+            line[correct_pos] = temp_p; // Place the character in the correct position
+            //for(int k = 0; k < n; k++) cout<< line[k]<< ' ';
+                //cout<< endl;
         }
     }
 
