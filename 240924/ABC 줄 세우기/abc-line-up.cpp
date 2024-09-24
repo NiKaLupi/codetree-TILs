@@ -12,7 +12,7 @@ int main() {
 
     int ex_time = 0;
     for(int i = 0; i < n; i++){
-        if(line[i] - 'A' > i){
+        if(line[i] - 'A' < i){
             char temp_p = line[i];
             for(int j = i - 1; j >= 0; j--){
                 line[j + 1] = line[j];
@@ -20,7 +20,7 @@ int main() {
                 ex_time++;
                 if(line[temp_p - 'A'] == temp_p) break;
             }
-        }else if(line[i] - 'A' < i){
+        }else if(line[i] - 'A' > i){
             char temp_p = line[i];
             for(int j = i + 1; j < n; j++){
                 line[j - 1] = line[j];
