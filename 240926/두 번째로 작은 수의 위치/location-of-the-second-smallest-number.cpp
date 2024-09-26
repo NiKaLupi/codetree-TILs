@@ -24,12 +24,12 @@ int main() {
             first_min_num = arr[i];
             index = i;
             duplicate = false;  // 새로 찾은 두 번째 값이 중복되지 않음
-        } else if (arr[i] >= first_min_num && arr[i] < second_min_num) {
+        } else if (arr[i] > first_min_num && arr[i] < second_min_num) {
             // 두 번째로 작은 값을 갱신
             second_min_num = arr[i];
             index = i + 1;  // 1-based 인덱스
             duplicate = false;
-        } else if (arr[i] == second_min_num) {
+        } else if (arr[i] == first_min_num) {
             // 두 번째로 작은 값이 중복되는 경우
             duplicate = true;
         }
