@@ -18,7 +18,7 @@ int main() {
     bool num = false;
     for(int i = 0; i < n; i++){
         if(first_min_num > arr[i] ) second_min_num = first_min_num, first_min_num = arr[i], num = false;
-        else if(second_min_num > arr[i]) second_min_num = arr[i], num = false, index = i + 1;
+        else if(second_min_num > arr[i] && arr[i] != first_min_num) second_min_num = arr[i], num = false, index = i + 1;
         else if(second_min_num == arr[i]) num = true;
     }
     if(num || (second_min_num == first_min_num)) cout<< -1;
