@@ -31,7 +31,7 @@ int main() {
             secondMin = arr[i];
             secondMinIndex = i + 1; // 1-based index
             isDuplicate = false;
-        } else if (arr[i] == firstMin) {
+        } else if (arr[i] == secondMin) {
             isDuplicate = true;
         }
     }
