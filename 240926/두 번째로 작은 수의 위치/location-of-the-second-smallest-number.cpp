@@ -27,7 +27,7 @@ int main() {
             secondMin = firstMin;
             firstMin = arr[i];
             isDuplicate = false;
-        } else if (arr[i] > firstMin && arr[i] < secondMin) {
+        } else if (arr[i] >= firstMin && arr[i] < secondMin) {
             secondMin = arr[i];
             secondMinIndex = i + 1; // 1-based index
             isDuplicate = false;
