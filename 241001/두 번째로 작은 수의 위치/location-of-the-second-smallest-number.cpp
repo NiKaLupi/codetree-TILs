@@ -14,10 +14,10 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> v;
         if(v == sec_min) duplicated = true;
-        if(v <= fir_min) fir_min = v, duplicated = true;
+        if(v < fir_min) fir_min = v;
         else if(v < sec_min) sec_min = v, duplicated = false, index = i + 1;
     }
-    if(duplicated) cout<< -1;
+    if(duplicated || sec_min == fir_min) cout<< -1;
     else cout<< index;
     return 0;
 }
