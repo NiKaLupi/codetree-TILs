@@ -32,25 +32,23 @@ int main() {
             }
         }
 
+        // Sort arrays for best results
         sort(positive, positive + pl_num, greater<int>());
         sort(negative, negative + mi_num);
 
-        if(mi_num < 2) {
-            // Case with fewer than two negative numbers
+        // Now we check if we have at least 3 positive or 3 negative numbers
+        if (pl_num >= 3) {
+            // Case when there are 3 or more positive numbers
             cout << positive[0] * positive[1] * positive[2];
-        } else if(pl_num >= 2) {
-            // Compare using both positive and negative numbers
-            if(positive[0] * positive[1] * positive[2] > positive[0] * negative[0] * negative[1]) {
-                cout << positive[0] * positive[1] * positive[2];
-            } else {
-                cout << positive[0] * negative[0] * negative[1];
-            }
-        } else if(pl_num == 1) {
-            // If only one positive number is available
+        } else if (mi_num >= 2 && pl_num >= 1) {
+            // Case when there are at least 2 negative numbers and 1 positive number
             cout << negative[0] * negative[1] * positive[0];
-        } else {
-            // If no positive numbers are available
+        } else if (mi_num >= 3) {
+            // Case when there are 3 or more negative numbers
             cout << negative[0] * negative[1] * negative[2];
+        } else {
+            // Handle cases where there are fewer numbers to use (e.g., n < 3 or not enough negative or positive numbers)
+            cout << "Insufficient numbers to compute product";
         }
     }
     return 0;
