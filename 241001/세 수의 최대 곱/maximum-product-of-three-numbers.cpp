@@ -8,8 +8,8 @@ int main() {
     int n, a, i, idx1 = 0, idx2 = 0, min, pl;
     cin >> n;
     if(n == 3){
-        cin>> n >> a>> i
-        cout<< n * a * i
+        cin>> n >> a>> i;
+        cout<< n * a * i;
         return 0;
     }
     for (i = 0; i < n; i++) {
