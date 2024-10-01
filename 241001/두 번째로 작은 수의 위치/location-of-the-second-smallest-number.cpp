@@ -18,7 +18,7 @@ int main() {
         else if(v < sec_min && v != fir_min) sec_min = v, duplicated = false, index = i + 1;
     }
     //cout<< fir_min<<  ' '<< sec_min;
-    if(duplicated || sec_min == fir_min) cout<< -1;
+    if(duplicated || sec_min == fir_min || sec_min == 101) cout<< -1;
     else cout<< index;
     return 0;
 }
