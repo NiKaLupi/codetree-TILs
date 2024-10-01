@@ -26,7 +26,7 @@ int main() {
 
     int distance = abs(index_B[0] - index_L[0]) + abs(index_B[1] - index_L[1]) - 1;
     if((index_R[0] == index_B[0] && index_R[0] == index_L[0]) || (index_R[1] == index_B[1] && index_R[1] == index_L[1])) {
-        distance += 1;
+        distance += 2;
     }
 
     cout << distance << endl;
