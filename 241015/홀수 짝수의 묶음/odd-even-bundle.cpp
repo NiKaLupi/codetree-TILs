@@ -19,7 +19,7 @@ int main() {
     else{
         if(odd_num == 1 ) cout<< 3;
         else if(odd_num < even_num) cout<< odd_num * 2 + 1;
-        //else cout<< even_num * 2 + (odd_num - even_num)
+        else cout<< even_num * 2 + (odd_num - even_num - 1) / 3 * 2 + 1;// 이 부분을 수정해줘 
     }
     return 0;
 }
