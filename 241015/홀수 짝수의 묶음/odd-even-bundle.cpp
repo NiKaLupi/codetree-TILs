@@ -6,28 +6,20 @@ int main() {
     int n;
     cin>> n;
 
-    int v;
+    int v, odd_num = 0, even_num = 0;
     for(int i = 0; i < n; i++){
         cin>> v;
-        elements[i] = v % 2;
+        if(v % 2 == 0) even_num++;
+        else odd_num++;
     }
-    //홀수 시작인 경우
-    int sum = 0, odd_num = 0, cnt = 0;
-    for(int i = 0; i < n - 1; i++){
-        cnt++;
-        sum += elements[i];
-        if(sum % 2 == 1 && odd_num % 2 == 0 && cnt > 1) odd_num++, sum = 0, cnt = 0;
-        else if(sum % 2 == 0 && odd_num % 2 == 1 && cnt > 1) odd_num++, sum = 0, cnt = 0;       
+    if(odd_num - even_num == 1 || odd_num - even_num == -1) cout<< n;
+    else if(odd_num == even_num) cout<< n;
+    else if(n == 2) cout<< odd_num + even_num * 2 - 1; 
+    else if(odd_num == 0) cout<< 1;
+    else{
+        if(odd_num == 1 ) cout<< 3;
+        else if(odd_num < even_num) cout<< odd_num * 2 + 1;
+        //else cout<< even_num * 2 + (odd_num - even_num)
     }
-    //짝수 시작인 경우
-    int even_num = 0;
-    for(int i = 0; i < n - 1; i++){
-        cnt++;
-        sum += elements[i];
-        if(sum % 2 == 0 && even_num % 2 == 0 && cnt > 1) even_num++, sum = 0, cnt = 0;
-        else if(sum % 2 == 1 && even_num % 2 == 1 && cnt > 1) even_num++, sum = 0, cnt = 0;       
-    }
-    if(odd_num > even_num) cout<< odd_num;
-    else cout<< even_num;
     return 0;
 }
