@@ -1,4 +1,4 @@
-ㅍ#include <iostream>
+#include <iostream>
 
 #define MAX_N 1000
 
