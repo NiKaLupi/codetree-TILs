@@ -14,7 +14,7 @@ int main() {
 
     if(values[1] - a == values[2] || values[1] == values[2]) b = values[2];
     if(values[2] - a == values[1]) b = values[1];
-    else c = values[6] - a - b;
+    c = values[6] - a - b;
 
     cout<< a<< ' '<< b<< ' '<< c;
 
