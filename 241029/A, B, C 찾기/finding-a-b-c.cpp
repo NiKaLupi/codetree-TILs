@@ -3,7 +3,7 @@
 using namespace std;
 int values[7];
 int main() {
-    int a, b, c;
+    long int a, b, c;
 
     for(int i = 0; i < 7; i++){
         cin>> values[i];
