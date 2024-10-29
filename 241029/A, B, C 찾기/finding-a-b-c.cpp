@@ -12,12 +12,11 @@ int main() {
 
     a = values[0];
 
-    if(values[1] - a == values[2]) b = values[2];
+    if(values[1] - a == values[2] || values[1] == values[2]) b = values[2];
     if(values[2] - a == values[1]) b = values[1];
-
-    c = values[6] - a - b;
+    else c = values[6] - a - b;
 
     cout<< a<< ' '<< b<< ' '<< c;
-    
+
     return 0;
 }
