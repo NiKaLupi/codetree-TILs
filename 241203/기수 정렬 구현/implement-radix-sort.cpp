@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-#define MAX_N 1000
+#define MAX_N 100000
 int arr[MAX_N];
 int main() {
     int n; 
