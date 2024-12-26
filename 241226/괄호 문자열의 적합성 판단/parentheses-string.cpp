@@ -15,7 +15,7 @@ int main() {
             return 0;
         }
         else s.pop();
-        if(/*(s.empty() == true && i < str.size() - 1)*/(s.empty() == false && i == str.size() - 1)){
+        if((s.empty() == false && i == str.size() - 1)){
             cout<< "No";
             return 0; 
         }
