@@ -9,6 +9,10 @@ int main() {
     stack<int> s;   
     for(int i = 0; i < str.size(); i++){
         if(str[i] == '(') s.push(1);
+        else if(i == 0){
+            cout<< "No";
+            return 0;
+        }
         else s.pop();
         if(/*(s.empty() == true && i < str.size() - 1)*/(s.empty() == false && i == str.size() - 1)){
             cout<< "No";
