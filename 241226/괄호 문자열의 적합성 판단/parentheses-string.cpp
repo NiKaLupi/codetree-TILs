@@ -10,8 +10,8 @@ int main() {
     for(int i = 0; i < str.size(); i++){
         if(str[i] == '(') s.push(1);
         else s.pop();
-        if((s.empty() == true && i < str.size() - 1) || (s.empty() == false && i == str.size() - 1)){
-            cout<<"No";
+        if(/*(s.empty() == true && i < str.size() - 1)*/(s.empty() == false && i == str.size() - 1)){
+            cout<< "No";
             return 0; 
         }
     }
