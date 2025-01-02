@@ -15,7 +15,9 @@ int main() {
         }else stack.pop();
         if(finish) break;
     }
-    if(stack.empty() == false) cout<< "No";
-    else cout<< "Yes";
+    if(!finish){
+        if(stack.empty() == false) cout<< "No";
+        else cout<< "Yes";
+    }
     return 0;
 }
